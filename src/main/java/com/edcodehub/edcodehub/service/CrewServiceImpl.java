@@ -16,6 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class CrewServiceImpl extends BaseServiceImpl<Crew> implements CrewService {
     private final CrewRepository crewRepository;
+    
+    private final PersonService personService;
 
     @Override
     public JpaRepository<Crew, Long> getRepository() { return crewRepository; }
@@ -24,7 +26,9 @@ public class CrewServiceImpl extends BaseServiceImpl<Crew> implements CrewServic
     public void addTVShowCrew(Person person, TVShow tvShow, Role role) {
 
         person.getCrew().add(newCrew(person, tvShow, role, null));
-
+    
+//        personService.save(person);
+        
         logger.debug("Person[{}] added to TVShow[{}]", person, tvShow);
     }
 
@@ -32,11 +36,16 @@ public class CrewServiceImpl extends BaseServiceImpl<Crew> implements CrewServic
     public void addMovieCrew(Person person, Movie movie, Role role) {
 
         person.getCrew().add(newCrew(person, null, role, movie));
+        
+//        personService.save(person);
 
         logger.debug("Person[{}] added to Movie[{}]", person, movie);
     }
 
     private Crew newCrew(Person person, TVShow tvShow, Role role, Movie movie) {
-        return Crew.builder().person(person).tvShow(tvShow).role(role).movie(movie).build();
+        Crew crew = Crew.builder().person(person).tvShow(tvShow).role(role).movie(movie).build();
+        
+        return create(crew);
+        
     }
 }

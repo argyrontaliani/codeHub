@@ -1,6 +1,7 @@
 package com.edcodehub.edcodehub.bootstrap;
 
 import com.edcodehub.edcodehub.base.BaseComponent;
+import com.edcodehub.edcodehub.domain.Crew;
 import com.edcodehub.edcodehub.domain.Movie;
 import com.edcodehub.edcodehub.domain.Person;
 import com.edcodehub.edcodehub.domain.TVShow;
@@ -67,14 +68,24 @@ public class BasicSampleContentCreator extends BaseComponent implements CommandL
 
     Person person1 = personService.findByFirstnameAndLastname("Konna", "B");
     Movie movie1 = movieService.findByTitle("Harry Potter");
-    crewService.addMovieCrew(person1, movie1, Role.ACTOR);
-    crewService.addMovieCrew(person1, movie1, Role.DIRECTOR);
-
+  
     Person person2 = personService.findByFirstnameAndLastname("Argy", "Nt");
     Movie movie2 = movieService.findByTitle("The nun");
-    TVShow tvShow = tvShowService.findByTitle("Horror stories");
-    crewService.addMovieCrew(person2, movie2, Role.DIRECTOR);
-    crewService.addTVShowCrew(person2, tvShow, Role.DIRECTOR);
+    TVShow tvShow = tvShowService.findByTitle("Friends");
+  
+    List<Crew> crewSet = crewService.createAll(
+      Crew.builder().person(person1).role(Role.ACTOR).movie(movie1).build(),
+            Crew.builder().person(person1).role(Role.DIRECTOR).movie(movie1).build(),
+            Crew.builder().person(person2).role(Role.DIRECTOR).movie(movie2).build(),
+            Crew.builder().person(person2).role(Role.DIRECTOR).tvShow(tvShow).build()
+            );
+    
+//    crewService.addMovieCrew(person1, movie1, Role.ACTOR);
+//    crewService.addMovieCrew(person1, movie1, Role.DIRECTOR);
+
+
+//    crewService.addMovieCrew(person2, movie2, Role.DIRECTOR);
+//    crewService.addTVShowCrew(person2, tvShow, Role.DIRECTOR);
 
   }
 }

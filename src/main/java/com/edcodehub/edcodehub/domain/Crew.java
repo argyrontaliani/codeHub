@@ -1,6 +1,8 @@
 package com.edcodehub.edcodehub.domain;
 
 import com.edcodehub.edcodehub.enums.Role;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -20,13 +22,19 @@ public class Crew extends BaseModel {
 	@NotNull
 	private Role role;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@ManyToOne(fetch = FetchType.EAGER)
 	@NotNull
 	private Person person;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Movie movie;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@ManyToOne(fetch = FetchType.EAGER)
 	private TVShow tvShow;
 }

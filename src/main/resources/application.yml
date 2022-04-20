@@ -7,7 +7,7 @@ spring:
   datasource:
     driver-class-name: org.h2.Driver
     hikari:
-      auto-commit: true
+      auto-commit: false
       connection-test-query: select 1 from dual;
       connection-timeout: 10000
       idle-timeout: 30000
@@ -52,7 +52,7 @@ spring:
           events:
             log:
               LOG_QUERIES_SLOWER_THAN_MS: 10 # NOT a production setting
-    show-sql: true
+    show-sql: false
   sql:
     init:
       # Mode to apply when determining if DataSource initialization should be performed using the available DDL (schema
@@ -60,4 +60,4 @@ spring:
       mode: never
       platform: h2
   main:
-    web-application-type: none
+    web-application-type: servlet

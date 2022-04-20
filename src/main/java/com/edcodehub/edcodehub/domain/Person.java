@@ -1,10 +1,12 @@
 package com.edcodehub.edcodehub.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 @Data
 @SuperBuilder
@@ -26,8 +28,8 @@ public class Person extends BaseModel {
 	@Column(length = 100, nullable = false)
 	private String country;
 	
-	@OneToMany(mappedBy = "person")
-	private Set<Crew> crew;
+	@OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
+	private Set<Crew> crew = new HashSet<>();
 	
 	
 }

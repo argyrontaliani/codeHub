@@ -1,17 +1,15 @@
 package com.edcodehub.edcodehub.domain;
 
 import com.edcodehub.edcodehub.enums.Genre;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+
+import javax.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToMany;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
@@ -47,6 +45,6 @@ public class BaseProduct extends BaseModel {
 	@Column(length = 4096)
 	private String storyline;
 	
-	@OneToMany(mappedBy = "person")
+	@OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
 	private Set<Crew> crewSet = new HashSet<>();
 }
