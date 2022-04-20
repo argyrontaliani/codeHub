@@ -7,7 +7,7 @@ spring:
   datasource:
     driver-class-name: org.h2.Driver
     hikari:
-      auto-commit: false
+      auto-commit: true
       connection-test-query: select 1 from dual;
       connection-timeout: 10000
       idle-timeout: 30000
