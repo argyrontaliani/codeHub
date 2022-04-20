@@ -17,4 +17,9 @@ public class TVShowServiceImpl extends BaseServiceImpl<TVShow> implements TVShow
     public JpaRepository<TVShow, Long> getRepository() {
         return tvshowRepository;
     }
+
+    @Override
+    public TVShow findByTitle(String title) {
+        return tvshowRepository.findByTitle(title);
+    }
 }

@@ -1,7 +1,11 @@
 package com.edcodehub.edcodehub.domain;
 
+import com.edcodehub.edcodehub.enums.Genre;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
@@ -18,10 +22,12 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @MappedSuperclass
+@EqualsAndHashCode(callSuper = false)
 public class BaseProduct extends BaseModel {
 	
-	@Column(length = 30, nullable = false)
-	private String genre;
+	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
+	private Genre genre;
 	
 	@Column
 	private Double rating;

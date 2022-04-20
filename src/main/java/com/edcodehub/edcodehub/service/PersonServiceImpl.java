@@ -15,4 +15,9 @@ public class PersonServiceImpl extends BaseServiceImpl<Person> implements Person
 
     @Override
     public JpaRepository<Person, Long> getRepository() { return personRepository; }
+
+    @Override
+    public Person findByFirstnameAndLastname(String firstName, String lastName) {
+        return personRepository.findByFirstnameAndLastname(firstName, lastName);
+    }
 }

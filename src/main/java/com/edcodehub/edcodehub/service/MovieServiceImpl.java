@@ -15,4 +15,10 @@ public class MovieServiceImpl extends BaseServiceImpl<Movie> implements MovieSer
 
     @Override
     public JpaRepository<Movie, Long> getRepository() { return movieRepository; }
+
+
+    @Override
+    public Movie findByTitle(String title) {
+        return movieRepository.findByTitle(title);
+    }
 }
