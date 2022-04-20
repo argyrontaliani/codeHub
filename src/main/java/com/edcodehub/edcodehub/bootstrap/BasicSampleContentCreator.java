@@ -80,12 +80,6 @@ public class BasicSampleContentCreator extends BaseComponent implements CommandL
             Crew.builder().person(person2).role(Role.DIRECTOR).tvShow(tvShow).build()
             );
     
-//    crewService.addMovieCrew(person1, movie1, Role.ACTOR);
-//    crewService.addMovieCrew(person1, movie1, Role.DIRECTOR);
-
-
-//    crewService.addMovieCrew(person2, movie2, Role.DIRECTOR);
-//    crewService.addTVShowCrew(person2, tvShow, Role.DIRECTOR);
 
   }
 }

@@ -25,7 +25,7 @@ public class TVShowController extends AbstractController<TVShow>{
   }
 
   @GetMapping(params = {"title"})
-  public ResponseEntity<ApiResponse<TVShow>> findByEmail(@RequestParam String title) {
+  public ResponseEntity<ApiResponse<TVShow>> findByTitle(@RequestParam String title) {
     return new ResponseEntity<>(ApiResponse.<TVShow>builder().data(tvShowService.findByTitle(title)).build(),
         HttpStatus.OK);
   }

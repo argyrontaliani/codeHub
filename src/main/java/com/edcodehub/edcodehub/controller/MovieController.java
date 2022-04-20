@@ -25,7 +25,7 @@ public class MovieController extends AbstractController<Movie>{
   }
 
   @GetMapping(params = {"title"})
-  public ResponseEntity<ApiResponse<Movie>> findByEmail(@RequestParam String title) {
+  public ResponseEntity<ApiResponse<Movie>> findByTitle(@RequestParam String title) {
     return new ResponseEntity<>(ApiResponse.<Movie>builder().data(movieService.findByTitle(title)).build(),
         HttpStatus.OK);
   }
