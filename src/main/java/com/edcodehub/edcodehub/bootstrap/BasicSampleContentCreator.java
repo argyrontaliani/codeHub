@@ -73,12 +73,12 @@ public class BasicSampleContentCreator extends BaseComponent implements CommandL
     Movie movie2 = movieService.findByTitle("The nun");
     TVShow tvShow = tvShowService.findByTitle("Friends");
   
-    List<Crew> crewSet = crewService.createAll(
-      Crew.builder().person(person1).role(Role.ACTOR).movie(movie1).build(),
+    crewService.createAll(
+            Crew.builder().person(person1).role(Role.ACTOR).movie(movie1).build(),
             Crew.builder().person(person1).role(Role.DIRECTOR).movie(movie1).build(),
             Crew.builder().person(person2).role(Role.DIRECTOR).movie(movie2).build(),
             Crew.builder().person(person2).role(Role.DIRECTOR).tvShow(tvShow).build()
-            );
+    );
     
 
   }
